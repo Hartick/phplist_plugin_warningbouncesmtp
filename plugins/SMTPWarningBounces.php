@@ -5,6 +5,7 @@ class SMTPWarningBounces extends phplistPlugin {
     public $coderoot = PLUGIN_ROOTDIR . "/SMTPWarningBounces/";
 
     const VERSION_FILE = 'version.txt';
+    const PLUGIN = 'SMTPWarningBounces';
 
     public $name = 'SMTP Warning Bounces';
     public $enabled = true;
@@ -14,7 +15,9 @@ class SMTPWarningBounces extends phplistPlugin {
 
     function __construct()
     {
+        $this->coderoot = dirname(__FILE__) . '/' . __CLASS__ . '/';
         parent::__construct();
+        $this->version = file_get_contents($this->coderoot . self::VERSION_FILE);
     }
 
     public function logEvent($msg = "") {

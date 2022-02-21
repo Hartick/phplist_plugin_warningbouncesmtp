@@ -23,7 +23,7 @@ class SMTPWarningBounces extends phplistPlugin {
     public function logEvent($msg = "") {
         $completeString = "Error sending email to %s";
         $translatedString = s($completeString);
-        $pattern = '/[a-z0-9_\-\+\.]+@[a-z0-9\-]+\.([a-z]{2,4})(?:\.[a-z]{2})?/i';
+        $pattern = '/([a-z0-9_\.\-])+\@(([a-z0-9\-])+\.)+([a-z0-9]{2,4})+/i';
         preg_match_all($pattern, $msg, $matches);
         if(empty($matches)) {
             return false;
